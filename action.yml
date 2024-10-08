@@ -8,12 +8,20 @@ inputs:
     required: true
 
   host:
-    description: 'The Kyanite deploy route root.'
+    description: 'The StumbleServer deploy route root.'
     required: true
-    default: 'https://server.stumblepriv.xyz/kyanite/api/deploy'
+    default: 'https://server.stumblepriv.xyz/ci/api/upload'
 
-  slug:
-    description: 'Slug of the workflow we want to execute. Defined in Slugs.yaml of the destination host.'
+  branch:
+    description: 'Branch (short ref)'
+    required: true
+
+  commit:
+    description: 'Commit (long)'
+    required: true
+
+  dll_path:
+    description: 'Path to built DLL file'
     required: true
 
 runs:

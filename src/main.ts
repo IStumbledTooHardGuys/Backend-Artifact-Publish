@@ -1,21 +1,24 @@
 import * as core from '@actions/core'
 import axios from 'axios';
+import { readFileSync } from 'fs';
 
 export async function run(): Promise<void> {
   try {
     const key: string = core.getInput('secret_key')
     const host: string = core.getInput('host')
-    const slug: string = core.getInput('slug')
+    const branch: string = core.getInput('branch')
+    const commit: string = core.getInput('commit')
+    const dllPath: string = core.getInput('dll_path')
 
-    core.info("Attempting to inform Kyanite on " + host);
+    core.info("Uploading artifact to " + host);
 
-    const res = await axios.post(`${host}/${slug}`, undefined, {
+    const res = await axios.post(`${host}/${branch}/${commit}`, readFileSync(dllPath).toString(), {
       headers: {
-        "X-Kyanite-Deployment-Security": key
+        "X-ISTHG-CiCd-Auth-Token": key
       }
     });
 
-    core.info(`${res.status} ${res.statusText}: ${res.data}`);
+    core.info(`${res.status} ${res.statusText}: ${JSON.stringify(res.data)}`);
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
