@@ -1,10 +1,10 @@
-name: 'Notify Kyanite to Deploy'
-description: 'The package posts to the Kyanite webhook to notify of a push.'
+name: 'Publish ISTHG Artifact'
+description: 'The package posts to the StumbleServer webhook to publish an artifact.'
 author: 'MainframeDev'
 
 inputs:
   secret_key:
-    description: 'The key which will be used for the X-Kyanite-Deployment-Security header.'
+    description: 'The key which will be used for the CiCd security header.'
     required: true
 
   host:
