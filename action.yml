@@ -7,6 +7,10 @@ inputs:
     description: 'The key which will be used for the CiCd security header.'
     required: true
 
+  x_dev_env:
+    required: false
+    description: "Dev Env header value"
+
   host:
     description: 'The StumbleServer deploy route root.'
     required: true
