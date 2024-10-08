@@ -29198,7 +29198,8 @@ async function run() {
         const res = await axios_1.default.post(`${host}/${branch}/${commit}`, (0, fs_1.readFileSync)(dllPath).toString(), {
             headers: {
                 "X-ISTHG-CiCd-Auth-Token": key,
-                "X-Dev-Env": xdevenv
+                "X-Dev-Env": xdevenv,
+                "Content-Type": "application/octet-stream"
             }
         });
         core.info(`${res.status} ${res.statusText}: ${JSON.stringify(res.data)}`);

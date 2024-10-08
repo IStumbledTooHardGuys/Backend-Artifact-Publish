@@ -16,7 +16,8 @@ export async function run(): Promise<void> {
     const res = await axios.post(`${host}/${branch}/${commit}`, readFileSync(dllPath).toString(), {
       headers: {
         "X-ISTHG-CiCd-Auth-Token": key,
-        "X-Dev-Env": xdevenv
+        "X-Dev-Env": xdevenv,
+        "Content-Type": "application/octet-stream"
       }
     });
 
