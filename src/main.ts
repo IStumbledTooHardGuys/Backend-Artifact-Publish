@@ -13,7 +13,7 @@ export async function run(): Promise<void> {
 
     core.info("Uploading artifact to " + host);
 
-    const res = await axios.post(`${host}/${branch}/${commit}`, readFileSync(dllPath).toString("hex"), {
+    const res = await axios.post(`${host}/${branch}/${commit}`, readFileSync(dllPath), {
       headers: {
         "X-ISTHG-CiCd-Auth-Token": key,
         "X-Dev-Env": xdevenv,
